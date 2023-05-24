@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   get 'items/index'
-  get 'api/items', to:'items#index'
-  get 'api/items/:id', to: 'items#show'
-  post'api/items', to: 'items#create'
-  get 'api/items/edit/:id', to: 'items#update'
-  get 'api/items/delete/:id', to: 'items#destroy'
+
+  scope 'api' do
+    
+    get 'items', to:'api#index'
+    get 'items/:id', to: 'api#show'
+    post'items', to: 'api#create'
+    put 'items/:id', to: 'api#update'
+    delete 'items/:id', to: 'api#destroy'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

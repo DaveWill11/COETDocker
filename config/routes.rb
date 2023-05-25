@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     post'items', to: 'api#create'
     put 'items/:id', to: 'api#update'
     delete 'items/:id', to: 'api#destroy'
+    post 'login', to: 'user#login'
+    get 'user', to: 'user#show'
   end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

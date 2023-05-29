@@ -10,6 +10,7 @@ class ApiController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    render json: @item
   end
 
   # GET /items/new

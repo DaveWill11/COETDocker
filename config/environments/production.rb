@@ -5,6 +5,18 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  
+  config.action_controller.perform_caching = true
+  config.action_controller.enable_fragment_cache_logging = true
+
+    config.cache_store = :redis_store, {
+      host: 'memcache',
+      port: 6379, 
+      db: 0
+    }
+    config.public_file_server.headers = {
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+    }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers

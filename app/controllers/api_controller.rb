@@ -1,6 +1,7 @@
 class ApiController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
-
+  skip_forgery_protection
+  
   # GET /items or /items.json
   def index
     @items = Item.all
@@ -9,6 +10,7 @@ class ApiController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    render json: @item
   end
 
   # GET /items/new
@@ -24,25 +26,20 @@ class ApiController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
-
-    respond_to do |format|
       if @item.save
-        format.json { render :show, status: :created, location: @item }
+        render json: @item, status: :created
       else
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        render json: @item.errors, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
-    respond_to do |format|
       if @item.update(item_params)
-        format.json { render :show, status: :ok, location: @item }
+        render json @item, status: :ok
       else
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        render json: @item.errors, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /items/1 or /items/1.json
@@ -62,6 +59,6 @@ class ApiController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:id, :name, :price)
+      params.permit(:id, :name, :price)
     end
 end

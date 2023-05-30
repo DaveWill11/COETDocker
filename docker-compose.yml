@@ -5,9 +5,15 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     env_file: .env
     restart: 'always'
+  memcache:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./tmp/redis_data:/var/lib/redis/data
   web:
     build: .
-    command: bash -c "rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rails db:migrate --trace && bundle exec rails s -p 3000 -b '0.0.0.0'"
     env_file: .env
     volumes:
       - .:/davedaftgoods

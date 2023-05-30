@@ -10,7 +10,9 @@ class ApiController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    if stale?(last_modified: @item.updated_at, public: true)
     render json: @item
+    end
   end
 
   # GET /items/new
@@ -36,7 +38,7 @@ class ApiController < ApplicationController
   # PATCH/PUT /items/1 or /items/1.json
   def update
       if @item.update(item_params)
-        render json @item, status: :ok
+        render json: @item, status: :ok
       else
         render json: @item.errors, status: :unprocessable_entity
       end

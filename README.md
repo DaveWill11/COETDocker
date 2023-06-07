@@ -1,7 +1,9 @@
 # README
+API created using Ruby on Rails, Postgres, Redis, and Docker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version 3.1.4
+
+Should run smooth from a "docker-compose up"
 
 Things you may want to cover:
 

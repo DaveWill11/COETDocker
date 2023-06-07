@@ -1,26 +1,9 @@
 # README
 API created using Ruby on Rails, Postgres, Redis, and Docker
+I'm not sure if I ever got the Redis caching working properly, but it still performed well.
 
 Ruby version 3.1.4
 
-Should run smooth from a "docker-compose up"
+Should run smooth from a "docker-compose up", if you had the environment variables...
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You will not be able to access the database without them. 

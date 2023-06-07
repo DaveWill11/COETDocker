@@ -1,6 +1,8 @@
 # README
 API created using Ruby on Rails, Postgres, Redis, and Docker.
+
 Purpose: School Project
+
 Notes: I'm not sure if I ever got the Redis caching working properly, but it still performed well.
 
 Ruby version 3.1.4
